@@ -7,6 +7,7 @@ using PotionCraft.ObjectBased.UIElements.Dialogue;
 using PotionCraft.ScriptableObjects;
 using System.Collections.Generic;
 
+
 namespace MoreChanceForSeeds
 {
     class Patches
@@ -26,7 +27,7 @@ namespace MoreChanceForSeeds
 
                 string last = Functions.GetLastComponent();
                 int random = Functions.GetRandomInt();
-                if (Functions.HasASeed(last))
+                if(Functions.HasASeed(last))
                 {
                     Functions.GetTheSeed(last, random, false);
                 }
@@ -43,21 +44,14 @@ namespace MoreChanceForSeeds
                 Inventory tTradingInventory = tradingPanel2.Inventory;
                 foreach (KeyValuePair<InventoryItem, int> keyValuePair2 in tTradingInventory.items)
                 {
-                    float getChance = Functions.ChanceForSeed();
-                    if (getChance < seedChance)
+                    string name = keyValuePair2.Key.name;
+                    if(Functions.HasASeed(name))
                     {
-                        string name = keyValuePair2.Key.name;
-                        if (Functions.isValidItem(keyValuePair2.Key))
+                        float getChance = Functions.ChanceForSeed();
+                        if (getChance < seedChance)
                         {
-                            
-                        }
-                        if(Functions.HasASeed(name))
-                        {
-                            if (Functions.ReturnSeed(name) != null)
-                            {
-                                int random = Functions.GetRandomInt();
-                                Functions.GetTheSeed(name, random, true);
-                            }
+                            int random = Functions.GetRandomInt();
+                            Functions.GetTheSeed(name, random, true);
                         }
                     }
                 }

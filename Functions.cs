@@ -5,7 +5,6 @@ using PotionCraft.NotificationSystem;
 using PotionCraft.ObjectBased.RecipeMap.RecipeMapObject;
 using PotionCraft.ObjectBased.UIElements.FloatingText;
 using PotionCraft.ScriptableObjects.BuildableInventoryItem;
-using PotionCraft.ScriptableObjects;
 using PotionCraft.Settings;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +14,8 @@ namespace MoreChanceForSeeds
 {
     class Functions
     {
+        private static List<BuildableInventoryItem> allSeeds = BuildableInventoryItem.allBuildableItems[BuildableInventoryItemType.Seed];
+
         public static void CreateText(string text)
         {
             RecipeMapObject recipeMapObject = Managers.RecipeMap.recipeMapObject;
@@ -36,7 +37,7 @@ namespace MoreChanceForSeeds
 
         public static bool HasASeed(string seedName)
         {
-            return (Seed)BuildableInventoryItem.allBuildableItems[BuildableInventoryItemType.Seed].Where(s => s.name.Contains(seedName)).First() == null ? true : false;
+            return (Seed)allSeeds.Where(s => s.name.Contains(seedName)).FirstOrDefault() == null ? false : true;
         }
 
         public static float ChanceForSeed()
@@ -46,13 +47,7 @@ namespace MoreChanceForSeeds
 
         public static Seed ReturnSeed(string name)
         {
-            return (Seed)BuildableInventoryItem.allBuildableItems[BuildableInventoryItemType.Seed].Where(s => s.name.Contains(name)).First();
-        }
-
-        public static bool isValidItem(InventoryItem item)
-        {
-            List<InventoryItemType> itemTypes = new List<InventoryItemType> { InventoryItemType.Herb, InventoryItemType.Mushroom, InventoryItemType.Crystal };
-            return itemTypes.Contains(item.GetItemType()) ? true : false;
+            return (Seed)allSeeds.Where(s => s.name.Contains(name)).First();
         }
 
         public static void GetTheSeed(string name, int random, bool isTrading)
