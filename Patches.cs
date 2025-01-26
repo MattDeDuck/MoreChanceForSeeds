@@ -26,8 +26,10 @@ namespace MoreChanceForSeeds
 
                 string last = Functions.GetLastComponent();
                 int random = Functions.GetRandomInt();
-
-                Functions.GetTheSeed(last, random, false);
+                if (Functions.HasASeed(last))
+                {
+                    Functions.GetTheSeed(last, random, false);
+                }
             }
         }
 
@@ -49,11 +51,13 @@ namespace MoreChanceForSeeds
                         {
                             
                         }
-
-                        if (Functions.ReturnSeed(name) != null)
+                        if(Functions.HasASeed(name))
                         {
-                            int random = Functions.GetRandomInt();
-                            Functions.GetTheSeed(name, random, true);
+                            if (Functions.ReturnSeed(name) != null)
+                            {
+                                int random = Functions.GetRandomInt();
+                                Functions.GetTheSeed(name, random, true);
+                            }
                         }
                     }
                 }

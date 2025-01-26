@@ -1,6 +1,6 @@
 {
   "name": "More_Chance_For_Seeds",
-  "version_number": "1.0.0",
+  "version_number": "1.0.1",
   "website_url": "https://github.com/MattDeDuck/MoreChanceForSeeds",
   "description": "A mod that adds the ability for ingredients to have a chance to drop seeds when added to the cauldron or bought from merchants!",
   "dependencies": [

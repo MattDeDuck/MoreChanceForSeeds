@@ -34,6 +34,11 @@ namespace MoreChanceForSeeds
             return Random.Range(1, 4);
         }
 
+        public static bool HasASeed(string seedName)
+        {
+            return (Seed)BuildableInventoryItem.allBuildableItems[BuildableInventoryItemType.Seed].Where(s => s.name.Contains(seedName)).First() == null ? true : false;
+        }
+
         public static float ChanceForSeed()
         {
             return Random.Range(0f, 1f);

@@ -10,7 +10,7 @@ namespace MoreChanceForSeeds
     public class Plugin : BaseUnityPlugin
     {
         public const string PLUGIN_GUID = "mattdeduck.PotionMoreChanceForSeeds";
-        public const string PLUGIN_VERSION = "1.0.0.0";
+        public const string PLUGIN_VERSION = "1.0.1.0";
 
         public static ManualLogSource Log { get; set; }
 
